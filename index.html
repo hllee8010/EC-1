@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>영미문학1 – 에듀케레 분석지</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1a2744;--gold:#c8a84b;--light:#f5f7fa;--white:#fff;--border:#dde3ee;--text:#222;--sub:#555;--green-bg:#e2efda;--green-txt:#375623;--yellow-bg:#fff2cc;--yellow-txt:#7f6000;--blue-mid:#2e75b6;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--light);color:var(--text);}
+#cover{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a2744 0%,#2a3f6f 60%,#1a2744 100%);text-align:center;padding:40px 20px;}
+#cover .school{color:#c8a84b;font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:4px;margin-bottom:12px;}
+#cover .title{color:#fff;font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:900;line-height:1.2;margin-bottom:16px;}
+#cover .subtitle{color:rgba(255,255,255,0.7);font-size:1rem;margin-bottom:40px;letter-spacing:2px;}
+#cover .gold-line{width:80px;height:3px;background:#c8a84b;margin:0 auto 40px;}
+#cover .passages{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:50px;}
+#cover .passage-btn{background:rgba(200,168,75,0.15);border:1px solid #c8a84b;color:#c8a84b;padding:10px 20px;border-radius:8px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:0.9rem;transition:all 0.2s;}
+#cover .passage-btn:hover{background:#c8a84b;color:#1a2744;}
+#cover .start-btn{background:#c8a84b;color:#1a2744;border:none;padding:14px 40px;border-radius:30px;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;}
+#app{display:none;}
+.app-header{background:#1a2744;color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+.app-header .logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:#c8a84b;}
+.app-header .back-btn{background:none;border:1px solid rgba(200,168,75,0.5);color:#c8a84b;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:0.85rem;font-family:'Noto Sans KR',sans-serif;}
+.layout{display:flex;min-height:calc(100vh - 52px);}
+.sidebar{width:220px;min-width:220px;background:#1a2744;padding:20px 0;overflow-y:auto;position:sticky;top:52px;height:calc(100vh - 52px);}
+.sidebar-title{color:#c8a84b;font-size:0.75rem;letter-spacing:3px;padding:0 16px 10px;border-bottom:1px solid rgba(200,168,75,0.2);margin-bottom:10px;}
+.sidebar-item{padding:11px 16px;cursor:pointer;color:rgba(255,255,255,0.7);font-size:0.82rem;border-left:3px solid transparent;transition:all 0.15s;line-height:1.4;}
+.sidebar-item:hover{background:rgba(255,255,255,0.06);color:#fff;}
+.sidebar-item.active{background:rgba(200,168,75,0.15);color:#c8a84b;border-left-color:#c8a84b;}
+.sidebar-item .num{font-size:0.7rem;color:#c8a84b;font-weight:700;display:block;}
+.main-content{flex:1;padding:28px 32px;max-width:900px;}
+.passage-header{margin-bottom:24px;}
+.passage-header .p-num{color:#c8a84b;font-size:0.8rem;letter-spacing:3px;font-weight:700;}
+.passage-header h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#1a2744;margin:4px 0 8px;}
+.passage-header .p-bar{width:60px;height:3px;background:#c8a84b;}
+.tabs{display:flex;gap:4px;margin-bottom:24px;flex-wrap:wrap;}
+.tab-btn{padding:8px 16px;border:none;background:#fff;color:#555;border-radius:8px 8px 0 0;cursor:pointer;font-size:0.82rem;font-family:'Noto Sans KR',sans-serif;border:1px solid #dde3ee;border-bottom:none;transition:all 0.15s;}
+.tab-btn:hover{background:#eef1f8;color:#1a2744;}
+.tab-btn.active{background:#1a2744;color:#c8a84b;font-weight:700;}
+.tab-content{display:none;background:#fff;border:1px solid #dde3ee;border-radius:0 8px 8px 8px;padding:28px;}
+.tab-content.active{display:block;}
+.full-text-box{font-family:'EB Garamond',serif;font-size:17px;line-height:1.9;border:2px solid #1a2744;border-left:5px solid #c8a84b;padding:24px 28px;border-radius:6px;background:#fafbff;}
+.sent-block{margin-bottom:28px;}
+.sent-num{display:inline-block;width:26px;height:26px;border-radius:50%;background:#1a2744;color:#fff;text-align:center;line-height:26px;font-size:0.78rem;font-weight:700;margin-right:6px;flex-shrink:0;}
+.sent-eng-box{font-family:'EB Garamond',serif;font-size:14px;line-height:1.8;border:1px solid #ccc;border-left:4px solid #2e75b6;padding:12px 16px;border-radius:4px;background:#fafbff;margin-bottom:8px;display:flex;align-items:flex-start;gap:8px;}
+.sent-eng-text{flex:1;}
+.slash-box{margin-bottom:6px;padding:8px 12px;border-radius:4px;background:#f5f7fa;font-size:0.88rem;}
+.slash-eng{color:#1a2744;font-family:'EB Garamond',serif;font-size:13px;}
+.slash-kr{color:#555;font-size:0.82rem;margin-top:2px;}
+.grammar-list{margin-top:6px;}
+.grammar-item{background:#fff2cc;color:#7f6000;padding:7px 12px;border-radius:4px;margin-bottom:5px;font-size:0.82rem;line-height:1.6;}
+.grammar-item .g-name{font-weight:700;}
+.grammar-item .g-ex{display:block;margin-top:2px;}
+.grammar-item .g-point{display:block;color:#7f4f00;margin-top:2px;font-size:0.78rem;}
+.vocab-item{background:#e2efda;color:#375623;padding:10px 14px;border-radius:5px;margin-bottom:7px;font-size:0.88rem;display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;}
+.vocab-word{font-family:'EB Garamond',serif;font-size:1rem;font-weight:700;min-width:130px;}
+.vocab-meaning{flex:1;font-weight:500;}
+.vocab-pos{color:#4a7a30;font-size:0.78rem;min-width:60px;}
+.vocab-deriv{color:#5a6;font-size:0.78rem;font-style:italic;}
+.translation-box{font-size:1rem;line-height:2;color:#222;border-left:4px solid #c8a84b;padding:20px 24px;background:#fffdf5;border-radius:4px;}
+.topic-card{background:#1a2744;color:#fff;padding:20px 24px;border-radius:8px;margin-bottom:16px;}
+.topic-card .label{color:#c8a84b;font-size:0.75rem;letter-spacing:3px;font-weight:700;margin-bottom:8px;}
+.topic-card .content{font-size:1rem;line-height:1.7;}
+.structure-step{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;border:1px solid #dde3ee;border-radius:6px;margin-bottom:8px;background:#fff;}
+.structure-step .s-num{background:#c8a84b;color:#1a2744;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+.structure-step .s-label{font-weight:700;color:#1a2744;font-size:0.85rem;}
+.structure-step .s-desc{color:#555;font-size:0.85rem;margin-top:2px;}
+.quiz-block{border:1px solid #dde3ee;border-radius:8px;margin-bottom:24px;overflow:hidden;}
+.quiz-header{background:#1a2744;color:#fff;padding:12px 18px;font-size:0.9rem;font-weight:700;}
+.quiz-header span{color:#c8a84b;}
+.quiz-body{padding:18px;}
+.quiz-text{font-size:0.9rem;line-height:1.7;margin-bottom:14px;color:#222;white-space:pre-wrap;}
+.options{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.options li button{width:100%;text-align:left;padding:9px 14px;border-radius:6px;border:1px solid #dde3ee;background:#fff;cursor:pointer;font-size:0.85rem;font-family:'Noto Sans KR',sans-serif;transition:all 0.15s;}
+.options li button:hover{background:#eef2ff;border-color:#1a2744;}
+.options li button.correct{background:#d4edda;border-color:#28a745;color:#155724;}
+.options li button.wrong{background:#f8d7da;border-color:#dc3545;color:#721c24;}
+.options li button.reveal{background:#d4edda;border-color:#28a745;color:#155724;}
+.quiz-explain{margin-top:10px;padding:10px 14px;background:#eef5ff;border-radius:5px;font-size:0.82rem;color:#333;display:none;border-left:3px solid #2e75b6;}
+.quiz-reset{margin-top:10px;background:none;border:1px solid #ccc;padding:5px 14px;border-radius:20px;cursor:pointer;font-size:0.78rem;color:#555;font-family:'Noto Sans KR',sans-serif;}
+.quiz-reset:hover{border-color:#1a2744;color:#1a2744;}
+.essay-block{border:1px solid #dde3ee;border-radius:8px;margin-bottom:20px;overflow:hidden;}
+.essay-header{background:#2a3f6f;color:#fff;padding:12px 18px;font-size:0.9rem;font-weight:700;}
+.essay-header span{color:#c8a84b;}
+.essay-body{padding:18px;}
+.essay-text{font-size:0.9rem;line-height:1.7;margin-bottom:14px;white-space:pre-wrap;}
+.essay-conditions{background:#f0f4ff;border-radius:5px;padding:10px 14px;font-size:0.82rem;color:#2a3f6f;margin-bottom:14px;border-left:3px solid #2e75b6;}
+.essay-textarea{width:100%;min-height:90px;border:1px solid #dde3ee;border-radius:6px;padding:10px 14px;font-family:'Noto Sans KR',sans-serif;font-size:0.88rem;resize:vertical;color:#222;background:#fff;}
+.essay-textarea:focus{outline:none;border-color:#1a2744;}
+.model-ans-btn{margin-top:8px;background:none;border:1px solid #c8a84b;color:#c8a84b;padding:6px 16px;border-radius:20px;cursor:pointer;font-size:0.8rem;font-family:'Noto Sans KR',sans-serif;}
+.model-ans-btn:hover{background:#c8a84b;color:#1a2744;}
+.model-ans{display:none;margin-top:10px;padding:12px 16px;background:#fffdf0;border:1px solid #c8a84b;border-radius:6px;font-size:0.85rem;line-height:1.7;color:#555;}
+.abc-box{background:#f5f7fa;padding:12px;border-radius:5px;font-family:'EB Garamond',serif;font-size:13px;line-height:1.8;margin-top:10px;white-space:pre-wrap;}
+</style>
+</head>
+<body>
+
+<div id="cover">
+  <div class="school">에듀케레 영수학원</div>
+  <div class="title">영미문학1</div>
+  <div class="subtitle">KITCHENS ON WHEELS — 5 Passages</div>
+  <div class="gold-line"></div>
+  <div class="passages">
+    <button class="passage-btn" onclick="openPassage(0)">본문 1 · Intro</button>
+    <button class="passage-btn" onclick="openPassage(1)">본문 2 · Origins</button>
+    <button class="passage-btn" onclick="openPassage(2)">본문 3 · Taco Truck</button>
+    <button class="passage-btn" onclick="openPassage(3)">본문 4 · Social Media</button>
+    <button class="passage-btn" onclick="openPassage(4)">본문 5 · Future</button>
+  </div>
+  <button class="start-btn" onclick="openPassage(0)">학습 시작 →</button>
+</div>
+
+<div id="app">
+  <div class="app-header">
+    <div class="logo">에듀케레 분석지 · 영미문학1</div>
+    <button class="back-btn" onclick="goHome()">← 목차</button>
+  </div>
+  <div class="layout">
+    
+<div class="sidebar">
+  <div class="sidebar-title">PASSAGES</div>
+  <div class="sidebar-item" id="sb0" onclick="openPassage(0)"><span class="num">본문 1</span>Intro: Kitchens on Wheels</div>
+  <div class="sidebar-item" id="sb1" onclick="openPassage(1)"><span class="num">본문 2</span>Origins</div>
+  <div class="sidebar-item" id="sb2" onclick="openPassage(2)"><span class="num">본문 3</span>Taco Truck &amp; Kogi</div>
+  <div class="sidebar-item" id="sb3" onclick="openPassage(3)"><span class="num">본문 4</span>Social Media &amp; Growth</div>
+  <div class="sidebar-item" id="sb4" onclick="openPassage(4)"><span class="num">본문 5</span>The Future</div>
+</div>
+
+    <div class="main-content" id="main-content"></div>
+  </div>
+</div>
+
+<script>
+var passages = [
+{
+  num:"본문 1",
+  title:"Kitchens on Wheels – Intro",
+  fullText:"Buying food out of a vehicle is actually a long-standing American tradition.\n— Jaya Saxena\n\nA food truck is a large vehicle equipped to cook and sell food. Some sell frozen or prepackaged food; others have on-board kitchens and prepare food from scratch. Sandwiches, hamburgers, fries, and other regional fast food dishes are common. Food trucks have become a popular business in itself or a stepping stone to something bigger. They are also found in TV shows and movies.\n\nThe food trucks we see today seem quite new and contemporary. In fact, the history of the food truck is quite long. Eating in an indoor restaurant is actually a more recent concept than that of buying food from a temporary setup such as a cart or a truck. Americans have always been quite comfortable getting their food on the streets. Being nicknamed \"roach coaches,\" food trucks have been around for years in America. Here we take a look at how Texas chuck wagons, a keen Korean taco entrepreneur, and the gourmet boom helped secure their popularity and prospects.\n\n*Jaya Saxena (1986–) 미국 기자, 작가",
+  sentences:[
+  {
+    eng:"Buying food out of a vehicle is actually a long-standing American tradition.",
+    slash:"Buying food / out of a vehicle / is actually / a long-standing American tradition.",
+    kr:"차량에서 음식을 사는 것은 / 사실 / 오랜 미국의 전통이다.",
+    grammar:[
+    {name:"동명사 주어 (Gerund Subject)",ex:"Buying food out of a vehicle is…",point:"동명사구가 문장의 주어 역할 → 단수 취급. 'is'가 동사임에 주목."},
+    {name:"복합 형용사 long-standing",ex:"long-standing American tradition",point:"'long-standing'은 복합 형용사(하이픈 연결). 수능 어법 문제로 자주 출제."},
+    ]
+  },
+  {
+    eng:"A food truck is a large vehicle equipped to cook and sell food.",
+    slash:"A food truck / is / a large vehicle / equipped to cook and sell food.",
+    kr:"푸드트럭은 / 음식을 요리하고 판매하도록 장착된 / 대형 차량이다.",
+    grammar:[
+    {name:"과거분사 후치 수식",ex:"a large vehicle equipped to cook and sell food",point:"'equipped'는 vehicle을 뒤에서 수식하는 과거분사. equipped to V = ~하도록 갖추어진."},
+    {name:"병렬 구조 (Parallel Structure)",ex:"to cook and sell food",point:"to부정사 하나에 두 동사(cook / sell)를 and로 연결. 수능 어법 단골 유형."},
+    ]
+  },
+  {
+    eng:"Some sell frozen or prepackaged food; others have on-board kitchens and prepare food from scratch.",
+    slash:"Some sell frozen or prepackaged food; / others have on-board kitchens / and prepare food from scratch.",
+    kr:"일부는 냉동 또는 미리 포장된 음식을 판매하고; / 다른 것들은 차내 주방을 갖추고 / 처음부터 음식을 준비한다.",
+    grammar:[
+    {name:"Some ~ others 대조 구문",ex:"Some sell…; others have…",point:"Some/others 대조 → 불특정 집합 분류. 글의 흐름 파악에 핵심."},
+    {name:"관용 표현 from scratch",ex:"prepare food from scratch",point:"'from scratch'= 처음부터. 수능 문맥 어휘 문제로 출제 가능."},
+    ]
+  },
+  {
+    eng:"Sandwiches, hamburgers, fries, and other regional fast food dishes are common.",
+    slash:"Sandwiches, hamburgers, fries, / and other regional fast food dishes / are common.",
+    kr:"샌드위치, 햄버거, 감자튀김, / 그리고 다른 지역 패스트푸드 요리들이 / 흔히 판매된다.",
+    grammar:[
+      {name:"열거 구조 (A, B, C, and D)",ex:"Sandwiches, hamburgers, fries, and other regional fast food dishes",point:"쉼표로 나열하고 마지막 항목 앞 and 사용. 수능 병렬 구조 어법 빈출."},
+      {name:"형용사 서술 용법 (Predicative Adjective)",ex:"are common",point:"be + 형용사(common) = 서술적 형용사 보어. 한정적 용법 'common dishes'와 구별."}
+    ]
+  },
+  {
+    eng:"Food trucks have become a popular business in itself or a stepping stone to something bigger.",
+    slash:"Food trucks / have become / a popular business in itself / or a stepping stone / to something bigger.",
+    kr:"푸드트럭은 / 그 자체로 인기 있는 사업이 되었거나 / 더 큰 무언가를 향한 발판이 되었다.",
+    grammar:[
+    {name:"현재완료 (Present Perfect)",ex:"have become",point:"have + p.p. → 과거부터 현재까지의 변화·결과. 단순 과거(became)와 구별."},
+    {name:"in itself / stepping stone",ex:"a popular business in itself",point:"'in itself'= 그 자체로. 'stepping stone'= 발판, 디딤돌. 비유적 표현 파악."},
+    ]
+  },
+  {
+    eng:"They are also found in TV shows and movies.",
+    slash:"They / are also found / in TV shows and movies.",
+    kr:"그것들은 / TV 쇼와 영화에서도 발견된다.",
+    grammar:[
+    {name:"수동태 (Passive Voice)",ex:"are found",point:"be + p.p. 수동 구조. 능동형은 'People find them in TV shows.' 수동·능동 전환 빈출."},
+    ]
+  },
+  {
+    eng:"The food trucks we see today seem quite new and contemporary.",
+    slash:"The food trucks / we see today / seem / quite new and contemporary.",
+    kr:"우리가 오늘날 보는 푸드트럭은 / 꽤 새롭고 현대적인 것처럼 보인다.",
+    grammar:[
+    {name:"관계절 목적격 생략 (Contact Clause)",ex:"the food trucks (that) we see today",point:"목적격 관계대명사 that/which 생략. 수능 어법 선택지 단골."},
+    {name:"seem + 형용사",ex:"seem quite new and contemporary",point:"seem은 주격 보어(형용사) 취하는 연결 동사."},
+    ]
+  },
+  {
+    eng:"In fact, the history of the food truck is quite long.",
+    slash:"In fact, / the history of the food truck / is / quite long.",
+    kr:"사실, / 푸드트럭의 역사는 / 꽤 길다.",
+    grammar:[
+    {name:"접속 부사 In fact",ex:"In fact, the history…",point:"'In fact'는 앞 내용을 반박·강조. 글의 흐름(역접/강조) 파악에 중요."},
+    ]
+  },
+  {
+    eng:"Eating in an indoor restaurant is actually a more recent concept than that of buying food from a temporary setup such as a cart or a truck.",
+    slash:"Eating in an indoor restaurant / is actually / a more recent concept / than that of buying food / from a temporary setup / such as a cart or a truck.",
+    kr:"실내 식당에서 먹는 것은 / 사실 / 카트나 트럭 같은 임시 시설에서 음식을 사는 것보다 / 더 최근의 개념이다.",
+    grammar:[
+    {name:"비교급 구문: more ~ than",ex:"a more recent concept than that of…",point:"'that'은 앞의 'concept'를 대신하는 지시대명사. that/those 대명사 구별 빈출."},
+    {name:"such as (예시 표현)",ex:"such as a cart or a truck",point:"such as = like(예를 들면). for example과의 용법 차이 이해."},
+    ]
+  },
+  {
+    eng:"Americans have always been quite comfortable getting their food on the streets.",
+    slash:"Americans / have always been / quite comfortable / getting their food on the streets.",
+    kr:"미국인들은 / 항상 / 길거리에서 음식을 구하는 것에 / 꽤 편안했다.",
+    grammar:[
+    {name:"be comfortable -ing",ex:"comfortable getting their food",point:"comfortable doing = ~하는 것을 편하게 여기다."},
+    {name:"현재완료 + 빈도 부사",ex:"have always been",point:"always/ever/never 등 빈도 부사는 have와 p.p. 사이 위치. 어순 어법 출제."},
+    ]
+  },
+  {
+    eng:"Being nicknamed \"roach coaches,\" food trucks have been around for years in America.",
+    slash:"Being nicknamed \"roach coaches,\" / food trucks / have been around / for years in America.",
+    kr:"\"바퀴벌레 마차\"라는 별명으로 불리면서, / 푸드트럭은 / 미국에서 수년간 존재해 왔다.",
+    grammar:[
+    {name:"분사구문 수동 (Passive Participial Phrase)",ex:"Being nicknamed \"roach coaches,\"",point:"Being + p.p. = 수동 의미의 분사구문. 주어(food trucks)와의 관계 파악."},
+    {name:"현재완료 지속 for + 기간",ex:"have been around for years",point:"for + 기간 → 현재완료 지속 용법. since + 시점과 구별."},
+    ]
+  },
+  {
+    eng:"Here we take a look at how Texas chuck wagons, a keen Korean taco entrepreneur, and the gourmet boom helped secure their popularity and prospects.",
+    slash:"Here / we take a look at / how Texas chuck wagons, / a keen Korean taco entrepreneur, / and the gourmet boom / helped secure / their popularity and prospects.",
+    kr:"여기서 우리는 / 텍사스 척 왜건, 열성적인 한국인 타코 사업가, 그리고 미식 붐이 / 어떻게 그것들의 인기와 전망을 확보하는 데 기여했는지 / 살펴볼 것이다.",
+    grammar:[
+    {name:"간접의문문 how + S + V",ex:"how … helped secure",point:"간접의문문 어순: how + 주어 + 동사. 의문사 도치 없음. 수능 어법 빈출."},
+    {name:"help + (to) V (원형부정사)",ex:"helped secure",point:"help는 원형부정사(V) 또는 to V 모두 가능."},
+    ]
+  },
+  ],
+  vocab:[
+  {word:"long-standing",meaning:"오랫동안 지속된",pos:"adj.",deriv:"stand (v.)"},
+  {word:"equipped",meaning:"갖춰진, 장착된",pos:"adj.",deriv:"equip (v.), equipment (n.)"},
+  {word:"from scratch",meaning:"처음부터, 밑바닥부터",pos:"idiom",deriv:"—"},
+  {word:"stepping stone",meaning:"발판, 디딤돌",pos:"n.",deriv:"—"},
+  {word:"contemporary",meaning:"현대의, 동시대의",pos:"adj.",deriv:"contemporarily (adv.)"},
+  {word:"temporary",meaning:"일시적인",pos:"adj.",deriv:"temporarily (adv.)"},
+  {word:"nickname",meaning:"별명을 붙이다; 별명",pos:"v./n.",deriv:"—"},
+  {word:"entrepreneur",meaning:"기업가, 사업가",pos:"n.",deriv:"entrepreneurship (n.)"},
+  {word:"gourmet",meaning:"미식의; 미식가",pos:"adj./n.",deriv:"—"},
+  {word:"prospects",meaning:"전망, 가능성",pos:"n.",deriv:"prospective (adj.)"},
+  {word:"secure",meaning:"확보하다; 안전한",pos:"v./adj.",deriv:"security (n.)"},
+  {word:"setup",meaning:"시설, 구성",pos:"n.",deriv:"set up (v.)"},
+  ],
+  translation:"차량에서 음식을 구매하는 것은 사실 오래된 미국의 전통이다. — Jaya Saxena\n\n푸드트럭은 음식을 요리하고 판매할 수 있도록 장비를 갖춘 대형 차량이다. 일부는 냉동 식품이나 미리 포장된 음식을 판매하고, 다른 것들은 차내에 주방을 갖추고 처음부터 음식을 준비한다. 샌드위치, 햄버거, 감자튀김, 그리고 다른 지역 패스트푸드 요리들이 흔히 판매된다. 푸드트럭은 그 자체로 인기 있는 사업이 되었거나, 더 큰 것을 향한 발판이 되기도 했다. 또한 TV 쇼와 영화에서도 등장한다.\n\n오늘날 우리가 보는 푸드트럭은 꽤 새롭고 현대적인 것처럼 보인다. 실제로 푸드트럭의 역사는 꽤 길다. 실내 식당에서 식사하는 것은 사실 카트나 트럭 같은 임시 시설에서 음식을 사는 것보다 더 최근의 개념이다. 미국인들은 항상 길거리에서 음식을 구하는 것에 편안함을 느껴왔다. '바퀴벌레 마차'라는 별명으로 불리면서도, 푸드트럭은 미국에서 수년간 존재해 왔다. 여기서 우리는 텍사스 척 왜건, 열성적인 한국인 타코 사업가, 그리고 미식 붐이 어떻게 푸드트럭의 인기와 전망 확보에 기여했는지 살펴볼 것이다.",
+  topic:{
+    topic:"미국 푸드트럭의 역사적 배경과 발전 소개",
+    gist:"푸드트럭은 오래된 미국의 전통으로, 실내 식당보다 역사가 길다. 이 글은 텍사스 척 왜건, 한국인 타코 사업가, 미식 붐이 어떻게 푸드트럭의 인기를 이끌었는지 개략적으로 소개한다.",
+    structure:[
+    {label:"도입",desc:"푸드트럭의 정의와 현재 모습 소개"},
+    {label:"전개 1",desc:"푸드트럭의 역사가 생각보다 길다는 역설적 사실 제시"},
+    {label:"전개 2",desc:"미국인의 길거리 음식 문화와 '로치 코치' 별명 소개"},
+    {label:"결론",desc:"척 왜건·한국인 사업가·미식 붐 세 키워드를 예고"},
+    ]
+  },
+  quiz:[
+  {
+    type:"주제 추론",qnum:1,
+    question:"다음 글의 주제로 가장 적절한 것은?",
+    options:["푸드트럭이 미국 음식 문화에서 차지하는 역사적 전통과 그 배경","푸드트럭의 위생 문제와 규제 필요성","미국 패스트푸드 산업의 세계적 확산","TV 방송이 푸드트럭 인기에 미친 영향","실내 식당과 야외 음식 판매의 경제적 비교"],
+    answer:0,
+    explain:"글 전체가 푸드트럭의 역사적 전통과 발전 배경을 소개하고 있으므로 1번이 적절하다."
+  },
+  {
+    type:"빈칸 추론",qnum:2,
+    question:"Eating in an indoor restaurant is actually a more recent concept than ______ of buying food from a temporary setup such as a cart or a truck.",
+    options:["one","those","that","it","what"],
+    answer:2,
+    explain:"앞의 명사 'concept'를 대신하는 단수 지시대명사 'that'이 정답이다."
+  },
+  {
+    type:"어법 오류",qnum:3,
+    question:"다음 밑줄 친 부분 중 어법상 틀린 것은?",
+    options:["① Buying food out of a vehicle is a long-standing tradition.","② Food trucks have become a popular business in themselves.","③ The food trucks we see today seem quite new and contemporary.","④ Americans have always been comfortable getting their food.","⑤ Being nicknamed 'roach coaches', food trucks have been around for years."],
+    answer:1,
+    explain:"② 복수 주어 'food trucks'에 호응할 때 'in itself'가 아닌 'in themselves'가 정확하다."
+  },
+  {
+    type:"내용 불일치",qnum:4,
+    question:"본문의 내용과 일치하지 않는 것은?",
+    options:["푸드트럭에는 차내에 주방을 갖춘 것도 있다.","푸드트럭은 TV 쇼와 영화에도 등장한다.","실내 식당에서 먹는 것이 길거리 음식보다 역사가 더 길다.","미국인들은 길거리에서 음식을 사는 것에 편안함을 느껴왔다.","푸드트럭은 더 큰 사업을 향한 발판이 되기도 한다."],
+    answer:2,
+    explain:"본문에 따르면 실내 식당이 오히려 '더 최근의 개념'(more recent)이므로 3번은 불일치."
+  },
+  {
+    type:"글의 순서",qnum:5,
+    question:"주어진 문장 다음에 이어질 글의 순서로 가장 적절한 것은? [The food trucks we see today seem quite new and contemporary.]",
+    options:["(A)-(B)-(C)","(B)-(A)-(C)","(B)-(C)-(A)","(C)-(A)-(B)","(A)-(C)-(B)"],
+    answer:1,
+    passageABC:"(A) Eating in an indoor restaurant is a more recent concept than that of buying food from a temporary setup.\n(B) In fact, the history of the food truck is quite long.\n(C) Americans have always been quite comfortable getting their food on the streets.",
+    explain:"'seem quite new'에 반박하는 'In fact, the history is quite long'(B)이 먼저, 그 근거로 실내 식당이 더 최근 개념(A), 미국인의 길거리 음식 친숙함(C) 순이 자연스럽다."
+  },
+  ],
+  essay:[
+  {
+    num:1,
+    question:"다음 빈칸 (A), (B)에 들어갈 말을 본문에서 찾아 쓰시오.\n\nFood trucks, often nicknamed (A)______, have a long history in America. Interestingly, eating in an indoor restaurant is a more (B)______ concept than buying food from a temporary setup.",
+    conditions:"(A), (B) 각각 본문에서 찾아 그대로 쓸 것.",
+    modelAnswer:"(A) roach coaches  (B) recent"
+  },
+  {
+    num:2,
+    question:"푸드트럭이 단순한 음식 판매 수단 이상의 의미를 갖는 이유를 본문 내용에 근거하여 영어로 서술하시오.",
+    conditions:"완전한 영어 문장으로, 25~35단어 내외.",
+    modelAnswer:"Food trucks serve not only as a standalone business but also as a stepping stone to bigger ventures, allowing aspiring chefs and entrepreneurs to gain exposure and build their careers."
+  },
+  ]
+},
+{
+  num:"본문 2",
+  title:"Origins",
+  fullText:"Origins\n\nThe origin of modern American food trucks can be traced to the Texas chuck wagon born during the post-Civil War cattle boom. In 1866, Charles Goodnight, a cattle man, remodeled an old U.S. Army truck with kitchen supplies and easy-to-store food like coffee, sacks of cornmeal, bacon, and salted beef. The need to feed and care for crews of cowhands resulted in the invention of the wagon.\n\nAround the same time, on the east coast, a street vendor named Walter Scott cut windows into a small covered wagon and parked it in front of a local newspaper office in Providence, Rhode Island. Walter sitting on a box inside, journalists and pressmen came and bought sandwiches, pies and coffee from the wagon.\n\n*post-Civil War cattle boom: 미국 남북전쟁 이후 호황을 이룬 소몰이",
+  sentences:[
+  {
+    eng:"The origin of modern American food trucks can be traced to the Texas chuck wagon born during the post-Civil War cattle boom.",
+    slash:"The origin of modern American food trucks / can be traced / to the Texas chuck wagon / born during the post-Civil War cattle boom.",
+    kr:"현대 미국 푸드트럭의 기원은 / 남북전쟁 이후 소몰이 붐 동안 탄생한 / 텍사스 척 왜건으로 거슬러 올라갈 수 있다.",
+    grammar:[
+    {name:"can be traced to (수동태 관용 표현)",ex:"can be traced to the Texas chuck wagon",point:"trace A to B = A의 기원을 B로 거슬러 올라가다. 수동형: can be traced to."},
+    {name:"과거분사 후치 수식",ex:"the Texas chuck wagon born during…",point:"born은 chuck wagon을 수식하는 과거분사. 관계절(which was born)로 전환 가능."},
+    ]
+  },
+  {
+    eng:"In 1866, Charles Goodnight, a cattle man, remodeled an old U.S. Army truck with kitchen supplies and easy-to-store food like coffee, sacks of cornmeal, bacon, and salted beef.",
+    slash:"In 1866, / Charles Goodnight, a cattle man, / remodeled / an old U.S. Army truck / with kitchen supplies / and easy-to-store food / like coffee, sacks of cornmeal, bacon, and salted beef.",
+    kr:"1866년에, / 목축업자 찰스 굿나이트는 / 낡은 미 육군 트럭을 / 주방 용품과 커피, 옥수수 가루 자루, 베이컨, 소금에 절인 쇠고기 같은 보관하기 쉬운 음식으로 / 개조했다.",
+    grammar:[
+    {name:"동격 표현 (Appositive)",ex:"Charles Goodnight, a cattle man",point:"콤마로 묶인 동격 명사구. 수식어의 역할 이해. 시험에서 삽입 표현 파악 능력 평가."},
+    {name:"복합 형용사: easy-to-store",ex:"easy-to-store food",point:"'easy-to-V' 구조 = 복합 형용사. 'food easy to store'와 동일 의미."},
+    ]
+  },
+  {
+    eng:"The need to feed and care for crews of cowhands resulted in the invention of the wagon.",
+    slash:"The need / to feed and care for / crews of cowhands / resulted in / the invention of the wagon.",
+    kr:"카우보이 무리를 먹이고 돌봐야 할 필요가 / 그 왜건의 발명으로 이어졌다.",
+    grammar:[
+    {name:"to부정사 명사 수식",ex:"the need to feed and care for",point:"'to feed and care for'는 'need'를 수식하는 형용사적 to부정사."},
+    {name:"result in (타동사구)",ex:"resulted in the invention",point:"result in = ~을 초래하다. result from(~에서 기인하다)과 반드시 구별."},
+    ]
+  },
+  {
+    eng:"Around the same time, on the east coast, a street vendor named Walter Scott cut windows into a small covered wagon and parked it in front of a local newspaper office in Providence, Rhode Island.",
+    slash:"Around the same time, / on the east coast, / a street vendor named Walter Scott / cut windows into a small covered wagon / and parked it / in front of a local newspaper office / in Providence, Rhode Island.",
+    kr:"비슷한 시기에, / 동부 해안에서는, / 월터 스콧이라는 이름의 노점상이 / 작은 덮개 달린 왜건에 창문을 내고 / 그것을 로드 아일랜드 주 프로비던스의 / 지역 신문사 앞에 세워 두었다.",
+    grammar:[
+    {name:"과거분사 명사 수식: named",ex:"a street vendor named Walter Scott",point:"named = called. 과거분사가 앞 명사 수식. 능동 의미의 현재분사와 구별."},
+    {name:"병렬 구조 (and 연결)",ex:"cut windows… and parked it",point:"동사 cut과 parked가 and로 연결. 시제 일치(과거) 및 병렬 구조 어법 출제."},
+    ]
+  },
+  {
+    eng:"Walter sitting on a box inside, journalists and pressmen came and bought sandwiches, pies and coffee from the wagon.",
+    slash:"Walter sitting on a box inside, / journalists and pressmen / came and bought / sandwiches, pies and coffee / from the wagon.",
+    kr:"월터가 안쪽 상자 위에 앉아 있는 가운데, / 기자들과 인쇄공들이 와서 / 왜건에서 샌드위치, 파이, 커피를 샀다.",
+    grammar:[
+    {name:"독립 분사구문 (Absolute Phrase)",ex:"Walter sitting on a box inside",point:"주절과 다른 주어(Walter)가 있는 분사구문 = 독립 분사구문. 수능 어법 고난도 유형."},
+    {name:"병렬 동사 came and bought",ex:"came and bought sandwiches, pies and coffee",point:"came과 bought 병렬. 목적어 열거(A, B and C) 구조도 함께 확인."},
+    ]
+  },
+  ],
+  vocab:[
+  {word:"origin",meaning:"기원, 근원",pos:"n.",deriv:"original (adj.), originate (v.)"},
+  {word:"trace",meaning:"거슬러 올라가다; 추적하다",pos:"v.",deriv:"traceable (adj.)"},
+  {word:"remodel",meaning:"개조하다, 새로 꾸미다",pos:"v.",deriv:"model (n./v.)"},
+  {word:"cornmeal",meaning:"옥수수 가루",pos:"n.",deriv:"—"},
+  {word:"cowhands",meaning:"카우보이, 목동",pos:"n.",deriv:"cowhand (단수)"},
+  {word:"result in",meaning:"~을 초래하다",pos:"phrasal v.",deriv:"result from(~에서 기인)"},
+  {word:"vendor",meaning:"노점상, 판매상",pos:"n.",deriv:"vend (v.)"},
+  {word:"pressmen",meaning:"인쇄공, 언론인",pos:"n.",deriv:"pressman (단수)"},
+  {word:"invention",meaning:"발명 (품)",pos:"n.",deriv:"invent (v.), inventor (n.)"},
+  {word:"covered wagon",meaning:"포장마차, 덮개 달린 마차",pos:"n.",deriv:"—"},
+  ],
+  translation:"현대 미국 푸드트럭의 기원은 남북전쟁 이후 소몰이 붐 시기에 탄생한 텍사스 척 왜건으로 거슬러 올라간다. 1866년, 목축업자 찰스 굿나이트는 낡은 미 육군 트럭을 주방 용품과 커피, 옥수수 가루 자루, 베이컨, 소금에 절인 쇠고기 같이 보관하기 쉬운 식품들로 개조했다. 카우보이 무리를 먹이고 돌봐야 할 필요성이 그 왜건의 발명으로 이어졌다.\n\n비슷한 시기, 동부 해안에서는 월터 스콧이라는 노점상이 작은 덮개 달린 왜건에 창문을 뚫고, 그것을 로드 아일랜드 주 프로비던스의 지역 신문사 앞에 세워 두었다. 월터가 안쪽 상자 위에 앉아 있는 가운데, 기자들과 인쇄공들이 찾아와 왜건에서 샌드위치, 파이, 커피를 사 갔다.",
+  topic:{
+    topic:"미국 푸드트럭의 역사적 기원: 척 왜건과 월터 스콧",
+    gist:"미국 푸드트럭의 뿌리는 19세기 텍사스 척 왜건과 동부 해안의 노점상 왜건에서 찾을 수 있다. 두 사례 모두 이동식 음식 판매라는 공통된 필요에서 탄생했다.",
+    structure:[
+    {label:"도입",desc:"푸드트럭의 기원을 척 왜건으로 제시"},
+    {label:"전개 1",desc:"찰스 굿나이트의 척 왜건: 카우보이 급식 필요에서 발명"},
+    {label:"전개 2",desc:"월터 스콧의 이동식 왜건: 동부 해안 언론인 대상"},
+    {label:"결론",desc:"두 사례 → 이동식 음식 판매 전통의 시작"},
+    ]
+  },
+  quiz:[
+  {
+    type:"주제 추론",qnum:1,
+    question:"다음 글의 주제로 가장 적절한 것은?",
+    options:["19세기 미국에서 시작된 이동식 음식 판매의 두 가지 기원","남북전쟁이 미국 음식 문화에 미친 전반적 영향","텍사스 척 왜건의 군사적 활용과 변천사","동부 해안 언론 문화와 길거리 음식의 관계","찰스 굿나이트의 목축업 경영 전략"],
+    answer:0,
+    explain:"척 왜건(서부)과 월터 스콧의 왜건(동부), 두 가지 이동식 음식 판매 기원을 소개하는 글이므로 1번이 적합하다."
+  },
+  {
+    type:"빈칸 추론",qnum:2,
+    question:"The need to feed and care for crews of cowhands ______ the invention of the wagon.",
+    options:["resulted from","contributed to","resulted in","led from","brought about from"],
+    answer:2,
+    explain:"'~의 결과를 초래하다'는 result in. result from은 '~에서 기인하다'로 반대 방향이다."
+  },
+  {
+    type:"어법 오류",qnum:3,
+    question:"다음 밑줄 친 부분 중 어법상 틀린 것은?",
+    options:["① The origin of food trucks can be traced to the Texas chuck wagon.","② Charles Goodnight remodeled an old truck with easy-to-store food.","③ The need to feed cowhands resulted from the invention of the wagon.","④ A street vendor named Walter Scott cut windows into a covered wagon.","⑤ Walter sitting on a box, journalists came and bought sandwiches."],
+    answer:2,
+    explain:"③ 'resulted from'은 '~에서 기인하다'의 뜻. 문맥상 '발명을 초래했다'이므로 'resulted in'이 맞다."
+  },
+  {
+    type:"내용 불일치",qnum:4,
+    question:"본문의 내용과 일치하지 않는 것은?",
+    options:["찰스 굿나이트는 낡은 미 육군 트럭을 개조했다.","척 왜건에는 커피, 옥수수 가루, 베이컨 등이 실렸다.","월터 스콧은 왜건을 신문사 앞에 세워 두었다.","월터 스콧의 왜건은 텍사스에 위치했다.","기자들과 인쇄공들이 왜건에서 음식을 구매했다."],
+    answer:3,
+    explain:"월터 스콧의 왜건은 텍사스가 아닌 로드 아일랜드 주 프로비던스에 있었다."
+  },
+  {
+    type:"글의 순서",qnum:5,
+    question:"주어진 문장 다음에 이어질 글의 순서로 가장 적절한 것은? [The origin of modern American food trucks can be traced to the Texas chuck wagon.]",
+    options:["(A)-(B)-(C)","(B)-(A)-(C)","(C)-(A)-(B)","(A)-(C)-(B)","(B)-(C)-(A)"],
+    answer:1,
+    passageABC:"(A) The need to feed and care for crews of cowhands resulted in the invention of the wagon.\n(B) In 1866, Charles Goodnight remodeled an old U.S. Army truck with kitchen supplies.\n(C) Around the same time, on the east coast, Walter Scott parked a covered wagon in front of a newspaper office.",
+    explain:"기원 소개(주어진 문장) → 굿나이트 이야기(B) → 필요성과 발명(A) → 동부 해안 사례(C) 순이 자연스럽다."
+  },
+  ],
+  essay:[
+  {
+    num:1,
+    question:"다음 빈칸 (A), (B)에 들어갈 말을 본문에서 찾아 쓰시오.\n\nCharles Goodnight (A)______ an old U.S. Army truck, while Walter Scott (B)______ windows into a covered wagon to sell food.",
+    conditions:"(A), (B) 각각 본문의 동사 과거형으로 쓸 것.",
+    modelAnswer:"(A) remodeled  (B) cut"
+  },
+  {
+    num:2,
+    question:"척 왜건이 발명된 이유를 본문에 근거하여 영어로 서술하시오.",
+    conditions:"완전한 영어 문장으로, 20~30단어 내외.",
+    modelAnswer:"The chuck wagon was invented because there was a need to feed and care for crews of cowhands working during the post-Civil War cattle boom."
+  },
+  ]
+},
+{
+  num:"본문 3",
+  title:"Taco Truck & Kogi",
+  fullText:"A more immediate line can be drawn from ice cream and taco trucks to the gourmet options we see now. \"As a kid growing up in Los Angeles, when I thought of food trucks, I thought of taco trucks,\" said Phil Shen, coauthor of Food Truck Road Trip: A Cookbook. Some people credit Raul Martinez of King Taco as the first to pioneer the concept. Martinez converted an old ice cream truck into a kitchen and began selling tacos out of it in East Los Angeles in 1974. Though there were mobile kitchens selling Mexican food around, Martinez's converted ice cream truck is how the \"taco truck\" was born.\n\nTransition into Street Gourmet\n\nWhen Mark Manguera and his friend, chef Roy Choi, opened a Korean BBQ taco truck, Kogi, in 2008 and hit the streets in L.A., it forever changed the food climate. They came up with the idea of combining Korean-style meat with Mexican tacos. Portable and affordable, the taco was fun, accessible and perfectly suited to the customers who were in search of a quick and tasty bite. Kogi also proved the food truck was now a place where people could get unique, restaurant-quality food.",
+  sentences:[
+  {
+    eng:"A more immediate line can be drawn from ice cream and taco trucks to the gourmet options we see now.",
+    slash:"A more immediate line / can be drawn / from ice cream and taco trucks / to the gourmet options / we see now.",
+    kr:"아이스크림 트럭과 타코 트럭에서 / 우리가 지금 보는 미식 옵션으로 / 더 직접적인 연결선을 그을 수 있다.",
+    grammar:[
+    {name:"수동태 조동사 (Modal Passive)",ex:"can be drawn",point:"can + be + p.p. 수동 구조. 능동 전환: We can draw a more immediate line…"},
+    {name:"관계절 목적격 생략",ex:"the gourmet options (that) we see now",point:"목적격 관계대명사 생략. 선행사 gourmet options 뒤 바로 주어+동사 결합."},
+    ]
+  },
+  {
+    eng:"\"As a kid growing up in Los Angeles, when I thought of food trucks, I thought of taco trucks,\" said Phil Shen, coauthor of Food Truck Road Trip: A Cookbook.",
+    slash:"\"As a kid growing up in L.A., / when I thought of food trucks, / I thought of taco trucks,\" / said Phil Shen, / coauthor of Food Truck Road Trip: A Cookbook.",
+    kr:"\"LA에서 자란 어린 시절, / 푸드트럭을 생각하면 타코 트럭이 떠올랐습니다,\"라고 / 필 쉔이 말했다.",
+    grammar:[
+    {name:"인용문 도치 (Inverted Reporting Clause)",ex:"\"…,\" said Phil Shen",point:"직접화법에서 said가 도치되어 'said + 주어' 어순 가능."},
+    {name:"현재분사 수식: growing up",ex:"a kid growing up in Los Angeles",point:"growing up은 kid를 수식하는 현재분사(능동·진행). 과거분사와 구별."},
+    ]
+  },
+  {
+    eng:"Some people credit Raul Martinez of King Taco as the first to pioneer the concept.",
+    slash:"Some people / credit Raul Martinez / as the first / to pioneer the concept.",
+    kr:"일부 사람들은 / 킹 타코의 라울 마르티네스를 / 그 개념을 처음 개척한 사람으로 / 인정한다.",
+    grammar:[
+    {name:"credit A as B 구문",ex:"credit Raul Martinez as the first",point:"credit A as B = A를 B로 인정하다/공을 돌리다. 'regard A as B'와 유사 구조."},
+    {name:"the first to V",ex:"the first to pioneer the concept",point:"the first/last/only + to V = ~한 첫 번째/마지막/유일한 사람."},
+    ]
+  },
+  {
+    eng:"Martinez converted an old ice cream truck into a kitchen and began selling tacos out of it in East Los Angeles in 1974.",
+    slash:"Martinez / converted / an old ice cream truck / into a kitchen / and began selling tacos / out of it / in East Los Angeles in 1974.",
+    kr:"마르티네스는 / 1974년 동부 LA에서 / 낡은 아이스크림 트럭을 주방으로 개조하여 / 그곳에서 타코를 팔기 시작했다.",
+    grammar:[
+    {name:"convert A into B",ex:"converted an old ice cream truck into a kitchen",point:"convert A into B = A를 B로 변환/개조하다."},
+    {name:"begin + -ing / to V",ex:"began selling",point:"begin은 동명사와 to부정사 모두 목적어로 취함. start, continue도 동일."},
+    ]
+  },
+  {
+    eng:"Though there were mobile kitchens selling Mexican food around, Martinez's converted ice cream truck is how the \"taco truck\" was born.",
+    slash:"Though there were mobile kitchens / selling Mexican food around, / Martinez's converted ice cream truck / is how / the \"taco truck\" was born.",
+    kr:"주변에 멕시코 음식을 파는 이동식 주방들이 있었지만, / 마르티네스의 개조된 아이스크림 트럭이야말로 / \"타코 트럭\"이 탄생한 방식이다.",
+    grammar:[
+    {name:"양보 접속사 Though",ex:"Though there were mobile kitchens…",point:"though/although = '~에도 불구하고'. 수능 연결어 빈칸 유형 빈출."},
+    {name:"관계부사 how (명사절)",ex:"is how the 'taco truck' was born",point:"how가 이끄는 명사절이 보어 역할. 'the way (that)'과 동의."},
+    ]
+  },
+  {
+    eng:"When Mark Manguera and his friend, chef Roy Choi, opened a Korean BBQ taco truck, Kogi, in 2008 and hit the streets in L.A., it forever changed the food climate.",
+    slash:"When Mark Manguera and chef Roy Choi / opened Kogi in 2008 / and hit the streets in L.A., / it forever changed the food climate.",
+    kr:"마크 망게라와 로이 최 셰프가 / 2008년 한국식 BBQ 타코 트럭 코기를 열고 / LA 거리로 나섰을 때, / 그것은 음식 문화를 영원히 바꾸어 놓았다.",
+    grammar:[
+    {name:"시간 부사절 When",ex:"When … opened … and hit the streets",point:"when 절 내부 병렬(opened and hit). 주절과의 시제 관계(과거) 확인."},
+    {name:"동격 표현",ex:"his friend, chef Roy Choi",point:"콤마 사이 동격. 독해 시 삽입구 처리 능력."},
+    ]
+  },
+  {
+    eng:"They came up with the idea of combining Korean-style meat with Mexican tacos.",
+    slash:"They / came up with / the idea / of combining Korean-style meat / with Mexican tacos.",
+    kr:"그들은 / 한국식 고기를 멕시코 타코와 결합하는 아이디어를 / 생각해냈다.",
+    grammar:[
+    {name:"come up with (구동사)",ex:"came up with the idea",point:"come up with = devise/think of(생각해내다). 수능 어휘·어법 문제 빈출 구동사."},
+    {name:"전명구 of + 동명사",ex:"the idea of combining",point:"'idea of -ing' = ~하는 아이디어."},
+    ]
+  },
+  {
+    eng:"Portable and affordable, the taco was fun, accessible and perfectly suited to the customers who were in search of a quick and tasty bite.",
+    slash:"Portable and affordable, / the taco was / fun, accessible / and perfectly suited / to the customers / who were in search of / a quick and tasty bite.",
+    kr:"휴대하기 편하고 저렴하여, / 타코는 재미있고, 접근하기 쉬우며 / 빠르고 맛있는 한 끼를 찾는 고객들에게 / 완벽하게 맞는 음식이었다.",
+    grammar:[
+    {name:"문두 형용사구 (분사구문 대용)",ex:"Portable and affordable, the taco was…",point:"Being portable and affordable로 확장 가능. 이유·조건 의미."},
+    {name:"관계대명사 who",ex:"customers who were in search of",point:"who는 선행사 customers(사람) 수식. in search of = looking for."},
+    ]
+  },
+  {
+    eng:"Kogi also proved the food truck was now a place where people could get unique, restaurant-quality food.",
+    slash:"Kogi / also proved / the food truck was now / a place / where people could get / unique, restaurant-quality food.",
+    kr:"코기는 또한 / 푸드트럭이 이제 / 사람들이 독특하고 레스토랑 수준의 음식을 얻을 수 있는 / 장소임을 증명했다.",
+    grammar:[
+    {name:"prove + that절",ex:"proved (that) the food truck was…",point:"prove는 that절을 목적어로 취함. that 생략 가능."},
+    {name:"관계부사 where",ex:"a place where people could get",point:"where = in which. 장소 선행사(a place) + where. 관계대명사 which와 혼동 주의."},
+    ]
+  },
+  ],
+  vocab:[
+  {word:"immediate",meaning:"직접적인; 즉각적인",pos:"adj.",deriv:"immediately (adv.)"},
+  {word:"credit A as B",meaning:"A를 B로 인정하다",pos:"v. phrase",deriv:"creditable (adj.)"},
+  {word:"pioneer",meaning:"개척하다; 선구자",pos:"v./n.",deriv:"pioneering (adj.)"},
+  {word:"convert A into B",meaning:"A를 B로 개조하다",pos:"v. phrase",deriv:"conversion (n.)"},
+  {word:"come up with",meaning:"생각해내다, 고안하다",pos:"phrasal v.",deriv:"—"},
+  {word:"portable",meaning:"휴대 가능한",pos:"adj.",deriv:"portability (n.)"},
+  {word:"affordable",meaning:"저렴한, 감당할 수 있는",pos:"adj.",deriv:"afford (v.)"},
+  {word:"accessible",meaning:"접근하기 쉬운",pos:"adj.",deriv:"access (n./v.), accessibility (n.)"},
+  {word:"in search of",meaning:"~을 찾아서",pos:"prep. phrase",deriv:"search (v./n.)"},
+  {word:"restaurant-quality",meaning:"레스토랑 수준의",pos:"adj.",deriv:"—"},
+  {word:"climate",meaning:"(사회적) 분위기; 기후",pos:"n.",deriv:"climatic (adj.)"},
+  ],
+  translation:"아이스크림 트럭과 타코 트럭에서 오늘날 우리가 보는 미식 옵션으로 이어지는 더 직접적인 선을 그을 수 있다. \"LA에서 자라던 어린 시절, 푸드트럭을 생각하면 타코 트럭이 떠올랐습니다,\"라고 필 쉔이 말했다. 일부 사람들은 킹 타코의 라울 마르티네스를 그 개념을 최초로 개척한 인물로 인정한다. 마르티네스는 1974년 동부 LA에서 낡은 아이스크림 트럭을 주방으로 개조해 타코를 팔기 시작했다. 주변에 멕시코 음식을 파는 이동식 주방들이 있었지만, 마르티네스의 개조된 아이스크림 트럭이야말로 '타코 트럭'이 탄생한 방식이다.\n\n마크 망게라와 로이 최 셰프가 2008년 코기를 열고 LA 거리에 나섰을 때, 그것은 음식 문화를 영원히 바꾸어 놓았다. 그들은 한국식 고기를 멕시코 타코와 결합하는 아이디어를 생각해냈다. 타코는 재미있고 접근하기 쉬웠으며, 빠르고 맛있는 한 끼를 찾는 고객들에게 완벽하게 맞는 음식이었다. 코기는 또한 푸드트럭이 이제 레스토랑 수준의 음식을 얻을 수 있는 장소임을 증명했다.",
+  topic:{
+    topic:"타코 트럭의 탄생과 코기(Kogi)가 이끈 거리 미식 혁명",
+    gist:"1974년 마르티네스의 아이스크림 트럭 개조로 타코 트럭이 탄생했고, 2008년 코기는 한국·멕시코 퓨전으로 푸드트럭의 미식 수준을 레스토랑급으로 끌어올렸다.",
+    structure:[
+    {label:"도입",desc:"아이스크림·타코 트럭 → 미식 트럭으로의 연결선"},
+    {label:"전개 1",desc:"마르티네스의 아이스크림 트럭 개조 → 타코 트럭 탄생(1974)"},
+    {label:"전개 2",desc:"코기(Kogi)의 등장: 한·멕 퓨전으로 음식 문화 변화(2008)"},
+    {label:"결론",desc:"코기 → 푸드트럭 = 레스토랑급 음식 장소 입증"},
+    ]
+  },
+  quiz:[
+  {
+    type:"주제 추론",qnum:1,
+    question:"다음 글의 주제로 가장 적절한 것은?",
+    options:["타코 트럭의 탄생과 코기가 이끈 푸드트럭 문화의 질적 변화","LA 음식 문화의 다양성과 이민자 음식의 기여","한국 음식이 미국 시장에서 성공하는 방법","멕시코 타코가 미국 전역으로 확산된 과정","아이스크림 트럭 산업의 쇠퇴와 변화"],
+    answer:0,
+    explain:"타코 트럭 탄생(마르티네스)과 코기의 미식 수준 향상이 중심이므로 1번이 가장 적절하다."
+  },
+  {
+    type:"빈칸 추론",qnum:2,
+    question:"Kogi proved the food truck was now a place ______ people could get unique, restaurant-quality food.",
+    options:["which","that","what","where","in that"],
+    answer:3,
+    explain:"선행사 'a place' 뒤 장소를 나타내는 관계부사 'where'가 정답."
+  },
+  {
+    type:"어법 오류",qnum:3,
+    question:"다음 밑줄 친 부분 중 어법상 틀린 것은?",
+    options:["① A more immediate line can be drawn from taco trucks to gourmet options.","② Martinez converted an old ice cream truck into a kitchen.","③ They came up with the idea of combining Korean-style meat with tacos.","④ Portable and affordable, the taco was perfectly suited to the customers.","⑤ Kogi proved the food truck was a place which people could get unique food."],
+    answer:4,
+    explain:"⑤에서 장소 선행사 뒤에는 관계부사 'where' 또는 'in which'를 써야 한다. 'which'만으로는 틀리다."
+  },
+  {
+    type:"내용 불일치",qnum:4,
+    question:"본문의 내용과 일치하지 않는 것은?",
+    options:["마르티네스는 아이스크림 트럭을 개조해 타코를 팔았다.","코기는 2008년에 LA에서 영업을 시작했다.","코기는 한국식 고기와 멕시코 타코를 결합했다.","마르티네스가 타코 트럭을 시작했을 때 주변에 이동식 주방은 없었다.","코기는 푸드트럭이 레스토랑 수준의 음식을 제공할 수 있음을 증명했다."],
+    answer:3,
+    explain:"본문에 'Though there were mobile kitchens selling Mexican food around'라고 나와 있으므로 4번은 불일치."
+  },
+  {
+    type:"글의 순서",qnum:5,
+    question:"주어진 문장 다음에 이어질 글의 순서로 가장 적절한 것은? [Some people credit Raul Martinez of King Taco as the first to pioneer the concept.]",
+    options:["(A)-(B)-(C)","(B)-(C)-(A)","(A)-(C)-(B)","(C)-(A)-(B)","(B)-(A)-(C)"],
+    answer:0,
+    passageABC:"(A) Though there were mobile kitchens around, Martinez's truck is how the taco truck was born.\n(B) Martinez converted an old ice cream truck into a kitchen and began selling tacos in 1974.\n(C) When Kogi hit the streets in 2008, it forever changed the food climate.",
+    explain:"마르티네스 소개 → 구체적 행동(B) → 타코 트럭 탄생 결론(A) → 코기로 전환(C) 순이 자연스럽다."
+  },
+  ],
+  essay:[
+  {
+    num:1,
+    question:"다음 빈칸 (A), (B)에 들어갈 말을 본문에서 찾아 쓰시오.\n\nMartinez (A)______ an old ice cream truck into a kitchen. Later, Kogi (B)______ the food truck was a place where people could get restaurant-quality food.",
+    conditions:"(A), (B)는 각각 동사의 과거형으로 쓸 것.",
+    modelAnswer:"(A) converted  (B) proved"
+  },
+  {
+    num:2,
+    question:"코기(Kogi)가 푸드트럭 문화에 미친 영향을 본문 내용에 근거하여 영어로 서술하시오.",
+    conditions:"완전한 영어 문장으로, 30단어 내외.",
+    modelAnswer:"Kogi changed the food climate by combining Korean-style meat with Mexican tacos and proving that food trucks could offer unique, restaurant-quality food to customers."
+  },
+  ]
+},
+{
+  num:"본문 4",
+  title:"Social Media & Growth",
+  fullText:"People went crazy for it and did not hesitate to form a block-long line even before the truck showed up. How did people know the truck would be parked there? Kogi pioneered the food truck's symbiotic relationship with social media, being one of the first food trucks to utilize SNS to promote their location.\n\nSince then, food trucks have become a respectable way for aspiring chefs to launch their careers. The biggest advantage food trucks have over traditional brick and mortar restaurants is very low costs. New chefs who want to share their food with the world use food trucks to gain exposure as a stepping stone to more conventional restaurant work. Thanks to the trend, food lovers get to eat more and more diverse dishes for a great price. Soon it will shock nobody if a person says he got his sophisticated lobster roll or organic quinoa burrito from \"a guy in a van.\"\n\n*quinoa burrito: 곡식류인 퀴노아 가루로 만든 tortilla에 고기·콩 등을 싼 멕시코 음식",
+  sentences:[
+  {
+    eng:"People went crazy for it and did not hesitate to form a block-long line even before the truck showed up.",
+    slash:"People / went crazy for it / and did not hesitate / to form a block-long line / even before the truck showed up.",
+    kr:"사람들은 그것에 열광하여 / 트럭이 나타나기도 전에 / 한 블록에 달하는 줄을 만드는 것을 / 주저하지 않았다.",
+    grammar:[
+    {name:"go crazy for (관용 표현)",ex:"went crazy for it",point:"go + 형용사 = ~한 상태가 되다. go crazy = 열광하다."},
+    {name:"hesitate to V",ex:"did not hesitate to form",point:"hesitate to V = ~하기를 주저하다. 부정형은 '망설임 없이 V하다'."},
+    ]
+  },
+  {
+    eng:"How did people know the truck would be parked there?",
+    slash:"How / did people know / the truck would be parked there?",
+    kr:"사람들은 트럭이 거기에 주차될 것을 어떻게 알았을까?",
+    grammar:[
+    {name:"수사 의문문 + 목적어 명사절",ex:"How did people know (that) the truck would be parked there?",point:"know + that절(목적어 명사절). would be parked = 미래 수동."},
+    {name:"미래 수동태 would be parked",ex:"the truck would be parked there",point:"would + be + p.p. = 미래 수동. 조동사 수동 구조 확인."},
+    ]
+  },
+  {
+    eng:"Kogi pioneered the food truck's symbiotic relationship with social media, being one of the first food trucks to utilize SNS to promote their location.",
+    slash:"Kogi / pioneered / the food truck's symbiotic relationship with social media, / being one of the first food trucks / to utilize SNS / to promote their location.",
+    kr:"코기는 / 푸드트럭과 소셜 미디어의 공생 관계를 개척했는데, / 그들의 위치를 홍보하기 위해 / SNS를 활용한 최초의 푸드트럭 중 하나였다.",
+    grammar:[
+    {name:"분사구문: being",ex:"being one of the first food trucks",point:"being 분사구문 = 이유·동시 상황. 'as it was one of the first'로 전환 가능."},
+    {name:"one of the first + 명사 + to V",ex:"one of the first food trucks to utilize",point:"'one of the first + 명사 + to V' = ~한 최초의 것들 중 하나."},
+    ]
+  },
+  {
+    eng:"Since then, food trucks have become a respectable way for aspiring chefs to launch their careers.",
+    slash:"Since then, / food trucks / have become / a respectable way / for aspiring chefs / to launch their careers.",
+    kr:"그 이후로, / 푸드트럭은 / 야심 찬 셰프들이 / 경력을 쌓기 위한 / 훌륭한 방법이 되었다.",
+    grammar:[
+    {name:"현재완료 + since then",ex:"have become … since then",point:"since + 과거 시점 → 현재완료. 'since then'은 '그 이후로'."},
+    {name:"for + 의미상 주어 + to V",ex:"for aspiring chefs to launch",point:"to부정사의 의미상 주어를 'for + 목적격'으로 표시."},
+    ]
+  },
+  {
+    eng:"The biggest advantage food trucks have over traditional brick and mortar restaurants is very low costs.",
+    slash:"The biggest advantage / food trucks have / over traditional brick and mortar restaurants / is / very low costs.",
+    kr:"푸드트럭이 전통적인 오프라인 식당에 비해 갖는 / 가장 큰 장점은 / 매우 낮은 비용이다.",
+    grammar:[
+    {name:"관계절 목적격 생략",ex:"The biggest advantage (that) food trucks have",point:"advantage 뒤 목적격 관계대명사 that 생략."},
+    {name:"have over (비교 우위)",ex:"have over traditional restaurants",point:"'have an advantage over' = ~보다 우위를 갖다."},
+    ]
+  },
+  {
+    eng:"New chefs who want to share their food with the world use food trucks to gain exposure as a stepping stone to more conventional restaurant work.",
+    slash:"New chefs / who want to share their food with the world / use food trucks / to gain exposure / as a stepping stone / to more conventional restaurant work.",
+    kr:"세상과 자신의 음식을 나누고 싶은 신인 셰프들은 / 푸드트럭을 이용해 / 더 일반적인 식당 일로 나아가기 위한 발판으로 / 노출을 얻는다.",
+    grammar:[
+    {name:"관계대명사 who (주격)",ex:"New chefs who want to share",point:"who는 주격 관계대명사. 선행사 New chefs 수식."},
+    {name:"to부정사 목적 (Infinitive of Purpose)",ex:"use food trucks to gain exposure",point:"to gain = '~하기 위해'. in order to / so as to로 바꿔 쓸 수 있음."},
+    ]
+  },
+  {
+    eng:"Thanks to the trend, food lovers get to eat more and more diverse dishes for a great price.",
+    slash:"Thanks to the trend, / food lovers / get to eat / more and more diverse dishes / for a great price.",
+    kr:"이 트렌드 덕분에, / 음식 애호가들은 / 점점 더 다양한 요리를 / 좋은 가격에 먹을 수 있게 되었다.",
+    grammar:[
+    {name:"Thanks to (원인·이유 전치사구)",ex:"Thanks to the trend",point:"Thanks to = because of = owing to. 긍정적 결과에 주로 사용."},
+    {name:"get to V (기회·가능)",ex:"get to eat",point:"get to V = have the chance/opportunity to V."},
+    ]
+  },
+  {
+    eng:"Soon it will shock nobody if a person says he got his sophisticated lobster roll or organic quinoa burrito from \"a guy in a van.\"",
+    slash:"Soon / it will shock nobody / if a person says / he got his sophisticated lobster roll / or organic quinoa burrito / from \"a guy in a van.\"",
+    kr:"\"밴 안의 남자\"에게서 랍스터 롤이나 퀴노아 부리또를 샀다고 말해도 / 머지않아 아무도 놀라지 않을 것이다.",
+    grammar:[
+    {name:"가주어 it ~ if 조건절",ex:"it will shock nobody if…",point:"it(가주어) + 동사 + 목적어 + if절(진주어). if절이 진짜 주어."},
+    {name:"shock nobody (완전 부정)",ex:"will shock nobody",point:"'shock nobody' = '아무도 놀라게 하지 않을'. nobody는 단수 취급."},
+    ]
+  },
+  ],
+  vocab:[
+  {word:"hesitate",meaning:"주저하다, 망설이다",pos:"v.",deriv:"hesitation (n.), hesitant (adj.)"},
+  {word:"symbiotic",meaning:"공생의",pos:"adj.",deriv:"symbiosis (n.)"},
+  {word:"utilize",meaning:"활용하다",pos:"v.",deriv:"utilization (n.), utility (n.)"},
+  {word:"respectable",meaning:"존경할 만한, 훌륭한",pos:"adj.",deriv:"respect (v./n.)"},
+  {word:"aspiring",meaning:"열망하는, 야심 찬",pos:"adj.",deriv:"aspire (v.), aspiration (n.)"},
+  {word:"brick and mortar",meaning:"오프라인(실제 건물 기반의)",pos:"adj.",deriv:"—"},
+  {word:"exposure",meaning:"노출, 알려짐",pos:"n.",deriv:"expose (v.)"},
+  {word:"conventional",meaning:"전통적인, 관습적인",pos:"adj.",deriv:"convention (n.)"},
+  {word:"sophisticated",meaning:"세련된, 정교한",pos:"adj.",deriv:"sophistication (n.)"},
+  {word:"organic",meaning:"유기농의",pos:"adj.",deriv:"organically (adv.)"},
+  {word:"pioneer",meaning:"개척하다",pos:"v./n.",deriv:"pioneering (adj.)"},
+  ],
+  translation:"사람들은 그것에 열광하여 트럭이 나타나기도 전에 한 블록에 달하는 줄을 만드는 것을 주저하지 않았다. 사람들은 트럭이 거기에 주차될 것을 어떻게 알았을까? 코기는 푸드트럭과 소셜 미디어의 공생 관계를 개척했으며, 자신들의 위치를 홍보하기 위해 SNS를 활용한 최초의 푸드트럭 중 하나였다.\n\n그 이후로, 푸드트럭은 야심 찬 셰프들이 경력을 쌓기 위한 훌륭한 방법이 되었다. 전통적인 오프라인 식당에 비해 갖는 가장 큰 장점은 매우 낮은 비용이다. 신인 셰프들은 푸드트럭을 더 일반적인 식당 일로 나아가기 위한 발판으로 활용하여 노출을 얻는다. 이 트렌드 덕분에, 음식 애호가들은 점점 더 다양한 요리를 좋은 가격에 즐길 수 있게 되었다. 머지않아 '밴 안의 남자'에게서 랍스터 롤이나 퀴노아 부리또를 샀다고 말해도 아무도 놀라지 않을 것이다.",
+  topic:{
+    topic:"코기의 SNS 마케팅과 푸드트럭의 경력 발판으로서의 역할",
+    gist:"코기는 SNS를 통해 푸드트럭과 소셜 미디어의 공생 관계를 개척했고, 이후 푸드트럭은 낮은 비용과 노출 기회로 인해 셰프들의 커리어 발판으로 자리잡았다.",
+    structure:[
+    {label:"도입",desc:"코기에 열광한 사람들 → SNS로 위치 공유 의문 제기"},
+    {label:"전개 1",desc:"코기의 SNS 개척: 푸드트럭·소셜미디어 공생 관계"},
+    {label:"전개 2",desc:"낮은 비용 → 셰프들의 커리어 발판"},
+    {label:"결론",desc:"트렌드 확산 → 다양한 음식을 저렴하게, 미래 전망"},
+    ]
+  },
+  quiz:[
+  {
+    type:"주제 추론",qnum:1,
+    question:"다음 글의 주제로 가장 적절한 것은?",
+    options:["SNS를 활용한 코기의 마케팅 혁신과 푸드트럭의 커리어 발판 역할","소셜 미디어가 음식 산업 전반에 미치는 부정적 영향","고급 음식의 대중화 과정","전통 식당이 푸드트럭 경쟁에 대응하는 방법","미국 요식업계에서 셰프 교육의 중요성"],
+    answer:0,
+    explain:"코기의 SNS 마케팅 혁신과 이후 푸드트럭이 셰프 커리어 발판이 된 과정이 중심 내용이므로 1번이 적절하다."
+  },
+  {
+    type:"빈칸 추론",qnum:2,
+    question:"The biggest advantage food trucks have ______ traditional brick and mortar restaurants is very low costs.",
+    options:["above","over","against","beyond","beside"],
+    answer:1,
+    explain:"'have an advantage over'는 ~보다 우위를 갖다는 고정 표현. over가 정답."
+  },
+  {
+    type:"어법 오류",qnum:3,
+    question:"다음 밑줄 친 부분 중 어법상 틀린 것은?",
+    options:["① People did not hesitate to form a block-long line before the truck showed up.","② Kogi pioneered the symbiotic relationship with social media.","③ Food trucks have become a respectable way for aspiring chefs to launch their careers.","④ New chefs who wants to share their food use food trucks to gain exposure.","⑤ Thanks to the trend, food lovers get to eat more diverse dishes."],
+    answer:3,
+    explain:"④ 관계사절의 주어는 'New chefs'(복수)이므로 'wants'가 아닌 'want'가 맞다."
+  },
+  {
+    type:"내용 불일치",qnum:4,
+    question:"본문의 내용과 일치하지 않는 것은?",
+    options:["코기는 SNS를 이용해 트럭 위치를 홍보했다.","사람들은 트럭이 도착하기 전부터 줄을 섰다.","푸드트럭의 가장 큰 장점은 전통 식당보다 낮은 비용이다.","신인 셰프들은 푸드트럭을 커리어의 종착지로 여긴다.","음식 애호가들은 트렌드 덕분에 다양한 요리를 즐길 수 있게 되었다."],
+    answer:3,
+    explain:"본문에서 푸드트럭은 '발판(stepping stone)'으로 묘사되며, 종착지가 아닌 시작점으로 활용된다."
+  },
+  {
+    type:"글의 순서",qnum:5,
+    question:"주어진 문장 다음에 이어질 글의 순서로 가장 적절한 것은? [Kogi pioneered the food truck's symbiotic relationship with social media.]",
+    options:["(A)-(B)-(C)","(B)-(A)-(C)","(C)-(B)-(A)","(A)-(C)-(B)","(C)-(A)-(B)"],
+    answer:1,
+    passageABC:"(A) The biggest advantage food trucks have over traditional restaurants is very low costs.\n(B) Since then, food trucks have become a respectable way for aspiring chefs to launch their careers.\n(C) New chefs use food trucks to gain exposure as a stepping stone to conventional restaurant work.",
+    explain:"코기의 SNS 개척 → 그 이후 커리어 방법으로 인정(B) → 낮은 비용이 장점(A) → 발판 활용(C) 순이 자연스럽다."
+  },
+  ],
+  essay:[
+  {
+    num:1,
+    question:"다음 빈칸 (A), (B)에 들어갈 말을 본문에서 찾아 쓰시오.\n\nKogi pioneered the food truck's (A)______ relationship with social media, and since then, food trucks have become a stepping stone for aspiring chefs to gain (B)______.",
+    conditions:"(A), (B) 각각 본문에서 찾아 그대로 쓸 것.",
+    modelAnswer:"(A) symbiotic  (B) exposure"
+  },
+  {
+    num:2,
+    question:"푸드트럭이 전통 식당보다 유리한 이유와 신인 셰프에게 주는 기회를 영어로 서술하시오.",
+    conditions:"완전한 영어 문장으로, 30단어 내외.",
+    modelAnswer:"Food trucks have very low costs compared to brick and mortar restaurants, so new chefs can use them to gain exposure and launch their careers as a stepping stone."
+  },
+  ]
+},
+{
+  num:"본문 5",
+  title:"The Future of Food Trucks",
+  fullText:"The Future of Food Trucks\n\nFood trucks have grown apart from their mere guerilla roots, which comes with several pros and cons. On one hand, greater acceptance and popularity have led to designated food truck spaces and food truck associations to support the rights of food truck owners. On the other hand, official inspections have also increased, which results in more regulation about where, when, and how food trucks can operate. Though he has been concerned, Dennis Lombardi, executive vice president at an American food company, says food truck owners still have a reason to be optimistic for their future. He said, \"The food truck market will continue to grow because food trucks are still a very small fraction of food industry.\" ",
+  sentences:[
+  {
+    eng:"Food trucks have grown apart from their mere guerilla roots, which comes with several pros and cons.",
+    slash:"Food trucks / have grown apart / from their mere guerilla roots, / which comes with / several pros and cons.",
+    kr:"푸드트럭은 / 단순한 게릴라식 뿌리에서 벗어나 성장했으며, / 이는 몇 가지 장단점을 수반한다.",
+    grammar:[
+    {name:"현재완료 have grown",ex:"have grown apart",point:"grow apart = 멀어지다, 벗어나다. 현재완료로 지금까지의 변화 표현."},
+    {name:"계속적 용법 관계절 which",ex:", which comes with several pros and cons",point:"콤마 + which = 앞 절 전체를 선행사로 받는 계속적 용법."},
+    ]
+  },
+  {
+    eng:"On one hand, greater acceptance and popularity have led to designated food truck spaces and food truck associations to support the rights of food truck owners.",
+    slash:"On one hand, / greater acceptance and popularity / have led to / designated food truck spaces / and food truck associations / to support the rights / of food truck owners.",
+    kr:"한편으로는, / 더 큰 수용과 인기가 / 지정된 푸드트럭 공간과 / 푸드트럭 협회를 이끌어 냈으며, / 이는 푸드트럭 소유자들의 권리를 지원한다.",
+    grammar:[
+    {name:"lead to + 명사 (결과 표현)",ex:"have led to designated spaces",point:"lead to + 명사/동명사 = ~으로 이어지다. result in과 유사."},
+    {name:"to부정사 형용사 용법",ex:"associations to support the rights",point:"to support는 associations를 수식하는 형용사적 to부정사."},
+    ]
+  },
+  {
+    eng:"On the other hand, official inspections have also increased, which results in more regulation about where, when, and how food trucks can operate.",
+    slash:"On the other hand, / official inspections / have also increased, / which results in / more regulation / about where, when, and how / food trucks can operate.",
+    kr:"반면에, / 공식적인 점검도 증가하여 / 푸드트럭이 어디서, 언제, 어떻게 운영될 수 있는지에 대한 / 더 많은 규제로 이어진다.",
+    grammar:[
+    {name:"On one hand ~ On the other hand 대조",ex:"On one hand… On the other hand…",point:"대조 연결 표현. 글의 흐름(장단점 나열) 파악에 핵심."},
+    {name:"간접의문문 열거: where, when, how",ex:"about where, when, and how food trucks can operate",point:"세 개의 간접의문문이 about에 연결. 각각 주어+동사 어순 유지."},
+    ]
+  },
+  {
+    eng:"Though he has been concerned, Dennis Lombardi, executive vice president at an American food company, says food truck owners still have a reason to be optimistic for their future.",
+    slash:"Though he has been concerned, / Dennis Lombardi, executive vice president, / says / food truck owners / still have a reason / to be optimistic / for their future.",
+    kr:"우려를 해왔음에도 불구하고, / 미국 식품 회사의 상무이사 데니스 롬바디는 / 푸드트럭 소유자들이 여전히 / 미래에 대해 낙관할 이유가 있다고 말한다.",
+    grammar:[
+    {name:"양보 부사절 Though + 현재완료",ex:"Though he has been concerned",point:"though + 현재완료 = 지금까지 ~해왔지만. 단순 과거와 뉘앙스 차이 구별."},
+    {name:"동격 삽입: 직책명",ex:"Dennis Lombardi, executive vice president at…",point:"동격으로 직함 삽입. 긴 삽입구 처리 → 주어-동사 관계 파악 능력."},
+    ]
+  },
+  {
+    eng:"He said, \"The food truck market will continue to grow because food trucks are still a very small fraction of food industry.\"",
+    slash:"He said, / \"The food truck market / will continue to grow / because food trucks / are still a very small fraction / of food industry.\"",
+    kr:"\"푸드트럭 시장은 계속 성장할 것인데, / 왜냐하면 푸드트럭은 여전히 / 식품 산업의 아주 작은 부분에 불과하기 때문입니다.\"라고 그는 말했다.",
+    grammar:[
+    {name:"직접화법 (Direct Speech)",ex:"He said, \"The food truck market will…\"",point:"직접화법 → 간접화법 전환: He said (that) the food truck market would…(시제 후퇴)"},
+    {name:"continue to V / continue -ing",ex:"will continue to grow",point:"continue to V = continue -ing. 두 형태 모두 가능."},
+    {name:"because 원인 부사절",ex:"because food trucks are still a very small fraction",point:"because + 완전한 절 = 이유. because of + 명사(구)와 구별."},
+    ]
+  },
+  ],
+  vocab:[
+  {word:"guerilla",meaning:"게릴라식의, 비공식적인",pos:"adj.",deriv:"—"},
+  {word:"pros and cons",meaning:"장단점",pos:"n. phrase",deriv:"—"},
+  {word:"designated",meaning:"지정된",pos:"adj.",deriv:"designate (v.), designation (n.)"},
+  {word:"association",meaning:"협회, 연합",pos:"n.",deriv:"associate (v./adj.)"},
+  {word:"inspection",meaning:"점검, 검사",pos:"n.",deriv:"inspect (v.), inspector (n.)"},
+  {word:"regulation",meaning:"규제, 규정",pos:"n.",deriv:"regulate (v.), regulatory (adj.)"},
+  {word:"operate",meaning:"운영하다; 작동하다",pos:"v.",deriv:"operation (n.), operational (adj.)"},
+  {word:"optimistic",meaning:"낙관적인",pos:"adj.",deriv:"optimism (n.), optimist (n.)"},
+  {word:"fraction",meaning:"일부, 소량; 분수",pos:"n.",deriv:"fractional (adj.)"},
+  {word:"acceptance",meaning:"수용, 인정",pos:"n.",deriv:"accept (v.), acceptable (adj.)"},
+  {word:"executive vice president",meaning:"상무이사, 부사장",pos:"n.",deriv:"executive (adj./n.)"},
+  ],
+  translation:"푸드트럭은 단순한 게릴라식 뿌리에서 벗어나 성장했으며, 이는 몇 가지 장단점을 수반한다. 한편으로는, 더 큰 수용과 인기가 지정된 푸드트럭 공간과 푸드트럭 소유자들의 권리를 지원하는 협회를 탄생시켰다. 반면에, 공식적인 점검도 증가하여 어디서, 언제, 어떻게 운영될 수 있는지에 대한 더 많은 규제로 이어졌다. 우려를 해왔음에도 불구하고, 미국 식품 회사의 상무이사 데니스 롬바디는 푸드트럭 소유자들이 미래에 대해 낙관할 이유가 있다고 말한다. 그는 \"푸드트럭 시장은 계속 성장할 것인데, 왜냐하면 푸드트럭은 여전히 식품 산업의 아주 작은 부분에 불과하기 때문입니다.\"라고 말했다.",
+  topic:{
+    topic:"푸드트럭 성장에 따른 장단점과 미래 전망",
+    gist:"푸드트럭이 제도권 안으로 들어오면서 지정 공간과 협회라는 긍정적 변화가 생겼지만, 동시에 규제도 증가했다. 전문가들은 시장 성장 여지가 있다며 낙관적인 전망을 제시한다.",
+    structure:[
+    {label:"도입",desc:"게릴라 뿌리에서 성장한 푸드트럭 → 장단점 존재"},
+    {label:"전개 1",desc:"장점: 지정 공간·협회 설립으로 권리 보호"},
+    {label:"전개 2",desc:"단점: 점검 증가 → 운영 규제 강화"},
+    {label:"결론",desc:"전문가 롬바디의 낙관적 전망: 여전히 성장 여지"},
+    ]
+  },
+  quiz:[
+  {
+    type:"주제 추론",qnum:1,
+    question:"다음 글의 주제로 가장 적절한 것은?",
+    options:["제도화된 푸드트럭 산업의 장단점과 전문가의 낙관적 전망","푸드트럭 규제 강화로 인한 산업 쇠퇴 가능성","미국 식품 회사들의 푸드트럭 시장 진출 전략","게릴라 마케팅이 음식 산업에 미치는 영향","푸드트럭 협회의 설립 과정과 주요 활동"],
+    answer:0,
+    explain:"장점(지정 공간·협회)과 단점(규제 증가), 그리고 전문가의 낙관론이 균형 있게 제시되므로 1번이 적절하다."
+  },
+  {
+    type:"빈칸 추론",qnum:2,
+    question:"The food truck market will continue to grow because food trucks are still a very small ______ of food industry.",
+    options:["portion","sector","fraction","segment","part"],
+    answer:2,
+    explain:"본문의 실제 어휘 'fraction'(일부, 소량)이 정답. 문맥상 '아주 작은 부분'을 나타낸다."
+  },
+  {
+    type:"어법 오류",qnum:3,
+    question:"다음 밑줄 친 부분 중 어법상 틀린 것은?",
+    options:["① Food trucks have grown apart from their mere guerilla roots.","② Greater acceptance and popularity has led to designated food truck spaces.","③ Official inspections have also increased, which results in more regulation.","④ Food truck owners still have a reason to be optimistic for their future.","⑤ The food truck market will continue to grow because food trucks are a small fraction."],
+    answer:1,
+    explain:"② 주어가 'Greater acceptance and popularity'(복수)이므로 'has'가 아닌 'have'가 맞다."
+  },
+  {
+    type:"내용 불일치",qnum:4,
+    question:"본문의 내용과 일치하지 않는 것은?",
+    options:["푸드트럭 협회가 소유자들의 권리를 지원하기 위해 생겨났다.","공식 점검이 증가하면서 운영 규제도 강화되었다.","데니스 롬바디는 푸드트럭의 미래에 비관적인 입장이다.","푸드트럭은 아직 식품 산업의 작은 부분을 차지한다.","지정된 푸드트럭 공간이 생겨났다."],
+    answer:2,
+    explain:"롬바디는 우려는 했지만 궁극적으로 낙관적(optimistic) 전망을 제시했으므로 3번이 불일치."
+  },
+  {
+    type:"글의 순서",qnum:5,
+    question:"주어진 문장 다음에 이어질 글의 순서로 가장 적절한 것은? [Food trucks have grown apart from their mere guerilla roots, which comes with several pros and cons.]",
+    options:["(A)-(B)-(C)","(B)-(A)-(C)","(A)-(C)-(B)","(C)-(B)-(A)","(B)-(C)-(A)"],
+    answer:0,
+    passageABC:"(A) On the other hand, official inspections have increased, resulting in more regulation.\n(B) On one hand, greater acceptance has led to designated spaces and associations.\n(C) Though concerned, Dennis Lombardi says food truck owners still have reason to be optimistic.",
+    explain:"장단점 예고(주어진 문장) → 장점(B) → 단점(A) → 전문가 전망(C) 순이 논리적."
+  },
+  ],
+  essay:[
+  {
+    num:1,
+    question:"다음 빈칸 (A), (B)에 들어갈 말을 본문에서 찾아 쓰시오.\n\nOn one hand, food trucks now have (A)______ spaces and associations. On the other hand, more (B)______ about where and how they operate has increased.",
+    conditions:"(A), (B) 각각 본문에서 찾아 쓸 것.",
+    modelAnswer:"(A) designated  (B) regulation"
+  },
+  {
+    num:2,
+    question:"데니스 롬바디가 푸드트럭 시장의 미래를 낙관하는 이유를 본문에 근거하여 영어로 서술하시오.",
+    conditions:"완전한 영어 문장으로, 20~30단어 내외.",
+    modelAnswer:"Dennis Lombardi is optimistic because food trucks are still a very small fraction of the food industry, meaning there is plenty of room for the market to grow."
+  },
+  ]
+}
+];
+var currentPassage=0;
+var currentTab={};
+
+function goHome(){
+  document.getElementById('cover').style.display='flex';
+  document.getElementById('app').style.display='none';
+}
+
+function openPassage(idx){
+  currentPassage=idx;
+  document.getElementById('cover').style.display='none';
+  document.getElementById('app').style.display='block';
+  for(var i=0;i<5;i++){
+    var el=document.getElementById('sb'+i);
+    if(el) el.className=el.className.replace(' active','')+(i===idx?' active':'');
+  }
+  if(!currentTab[idx]) currentTab[idx]='tab-full';
+  renderPassage(idx);
+}
+
+function switchTab(pidx,tabId){
+  currentTab[pidx]=tabId;
+  document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.remove('active');});
+  var at=document.querySelector('[data-tab="'+tabId+'"]');
+  var ac=document.getElementById(tabId);
+  if(at) at.classList.add('active');
+  if(ac) ac.classList.add('active');
+}
+
+function esc(s){
+  if(!s) return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function nl2br(s){
+  return esc(s).replace(/\n/g,'<br>');
+}
+
+function renderPassage(idx){
+  var p=passages[idx];
+  var mc=document.getElementById('main-content');
+  var activeT=currentTab[idx]||'tab-full';
+  var h='';
+  h+='<div class="passage-header">';
+  h+='<div class="p-num">'+esc(p.num)+'</div>';
+  h+='<h2>'+esc(p.title)+'</h2>';
+  h+='<div class="p-bar"></div></div>';
+
+  var tabDefs=[
+    {id:'tab-full',label:'① 전문'},
+    {id:'tab-sent',label:'② 문장분석'},
+    {id:'tab-vocab',label:'③ 핵심단어'},
+    {id:'tab-trans',label:'④ 전문해석'},
+    {id:'tab-topic',label:'⑤ 주제·요지'},
+    {id:'tab-quiz',label:'⑥ 변형문제'}
+  ];
+  h+='<div class="tabs">';
+  tabDefs.forEach(function(t){
+    var act=t.id===activeT?' active':'';
+    h+='<button class="tab-btn'+act+'" data-tab="'+t.id+'" onclick="switchTab('+idx+',this.dataset.tab)">'+t.label+'</button>';
+  });
+  h+='</div>';
+
+  // TAB 1
+  h+='<div class="tab-content'+(activeT==='tab-full'?' active':'')+'" id="tab-full">';
+  h+='<div class="full-text-box">'+nl2br(p.fullText)+'</div>';
+  h+='</div>';
+
+  // TAB 2
+  h+='<div class="tab-content'+(activeT==='tab-sent'?' active':'')+'" id="tab-sent">';
+  p.sentences.forEach(function(s,si){
+    h+='<div class="sent-block">';
+    h+='<div class="sent-eng-box"><span class="sent-num">'+(si+1)+'</span><span class="sent-eng-text">'+esc(s.eng)+'</span></div>';
+    h+='<div class="slash-box"><div class="slash-eng">'+esc(s.slash)+'</div><div class="slash-kr">'+esc(s.kr)+'</div></div>';
+    h+='<div class="grammar-list">';
+    s.grammar.forEach(function(g){
+      h+='<div class="grammar-item"><span class="g-name">◆ '+esc(g.name)+'</span>';
+      h+='<span class="g-ex">▶ '+esc(g.ex)+'</span>';
+      h+='<span class="g-point">★ '+esc(g.point)+'</span></div>';
+    });
+    h+='</div></div>';
+  });
+  h+='</div>';
+
+  // TAB 3
+  h+='<div class="tab-content'+(activeT==='tab-vocab'?' active':'')+'" id="tab-vocab">';
+  p.vocab.forEach(function(v){
+    h+='<div class="vocab-item">';
+    h+='<span class="vocab-word">'+esc(v.word)+'</span>';
+    h+='<span class="vocab-meaning">'+esc(v.meaning)+'</span>';
+    h+='<span class="vocab-pos">'+esc(v.pos)+'</span>';
+    h+='<span class="vocab-deriv">'+esc(v.deriv)+'</span>';
+    h+='</div>';
+  });
+  h+='</div>';
+
+  // TAB 4
+  h+='<div class="tab-content'+(activeT==='tab-trans'?' active':'')+'" id="tab-trans">';
+  h+='<div class="translation-box">'+nl2br(p.translation)+'</div>';
+  h+='</div>';
+
+  // TAB 5
+  h+='<div class="tab-content'+(activeT==='tab-topic'?' active':'')+'" id="tab-topic">';
+  h+='<div class="topic-card"><div class="label">주제 (TOPIC)</div><div class="content">'+esc(p.topic.topic)+'</div></div>';
+  h+='<div class="topic-card"><div class="label">요지 (MAIN IDEA)</div><div class="content">'+esc(p.topic.gist)+'</div></div>';
+  h+='<div style="margin-top:16px;margin-bottom:8px;font-weight:700;color:#1a2744;font-size:0.9rem;">구조 흐름</div>';
+  p.topic.structure.forEach(function(s,si){
+    h+='<div class="structure-step"><div class="s-num">'+(si+1)+'</div>';
+    h+='<div><div class="s-label">'+esc(s.label)+'</div><div class="s-desc">'+esc(s.desc)+'</div></div></div>';
+  });
+  h+='</div>';
+
+  // TAB 6
+  h+='<div class="tab-content'+(activeT==='tab-quiz'?' active':'')+'" id="tab-quiz">';
+  p.quiz.forEach(function(q,qi){
+    var qid='p'+idx+'q'+qi;
+    h+='<div class="quiz-block">';
+    h+='<div class="quiz-header"><span>['+esc(q.type)+']</span> '+q.qnum+'번</div>';
+    h+='<div class="quiz-body">';
+    h+='<div class="quiz-text">'+nl2br(q.question)+'</div>';
+    if(q.passageABC){
+      h+='<div class="abc-box">'+nl2br(q.passageABC)+'</div>';
+    }
+    h+='<ul class="options">';
+    var circles=['①','②','③','④','⑤'];
+    q.options.forEach(function(opt,oi){
+      h+='<li><button id="'+qid+'opt'+oi+'" data-qid="'+qid+'" data-oi="'+oi+'" data-correct="'+q.answer+'" data-qi="'+qi+'" data-pidx="'+idx+'" onclick="selectOpt(this)">'+circles[oi]+' '+esc(opt)+'</button></li>';
+    });
+    h+='</ul>';
+    h+='<div class="quiz-explain" id="'+qid+'exp">'+esc(q.explain)+'</div>';
+    h+='<button class="quiz-reset" data-qid="'+qid+'" data-n="'+q.options.length+'" onclick="resetQuiz(this)">↺ 다시 풀기</button>';
+    h+='</div></div>';
+  });
+
+  p.essay.forEach(function(e,ei){
+    var eid='p'+idx+'e'+ei;
+    h+='<div class="essay-block">';
+    h+='<div class="essay-header"><span>[서술형 '+e.num+']</span></div>';
+    h+='<div class="essay-body">';
+    h+='<div class="essay-text">'+nl2br(e.question)+'</div>';
+    h+='<div class="essay-conditions">📌 조건: '+esc(e.conditions)+'</div>';
+    h+='<textarea class="essay-textarea" id="'+eid+'txt" placeholder="답안을 여기에 작성하세요..."></textarea>';
+    h+='<br><button class="model-ans-btn" data-eid="'+eid+'" onclick="toggleModel(this)">모범답안 보기 / 숨기기</button>';
+    h+='<div class="model-ans" id="'+eid+'ans"><strong>📝 모범답안</strong><br>'+nl2br(e.modelAnswer)+'</div>';
+    h+='</div></div>';
+  });
+  h+='</div>';
+
+  mc.innerHTML=h;
+  mc.scrollTop=0;
+}
+
+function selectOpt(btn){
+  var qid=btn.dataset.qid;
+  var chosen=parseInt(btn.dataset.oi);
+  var correct=parseInt(btn.dataset.correct);
+  var pidx=parseInt(btn.dataset.pidx);
+  var qi=parseInt(btn.dataset.qi);
+  var n=passages[pidx].quiz[qi].options.length;
+  for(var i=0;i<n;i++){
+    var b=document.getElementById(qid+'opt'+i);
+    if(b) b.disabled=true;
+  }
+  var cb=document.getElementById(qid+'opt'+chosen);
+  var corb=document.getElementById(qid+'opt'+correct);
+  if(chosen===correct){
+    if(cb) cb.className+=' correct';
+  } else {
+    if(cb) cb.className+=' wrong';
+    if(corb) corb.className+=' reveal';
+  }
+  var exp=document.getElementById(qid+'exp');
+  if(exp) exp.style.display='block';
+}
+
+function resetQuiz(btn){
+  var qid=btn.dataset.qid;
+  var n=parseInt(btn.dataset.n);
+  for(var i=0;i<n;i++){
+    var b=document.getElementById(qid+'opt'+i);
+    if(b){b.disabled=false;b.className=b.className.replace(/ correct| wrong| reveal/g,'');}
+  }
+  var exp=document.getElementById(qid+'exp');
+  if(exp) exp.style.display='none';
+}
+
+function toggleModel(btn){
+  var eid=btn.dataset.eid;
+  var el=document.getElementById(eid+'ans');
+  if(el) el.style.display=el.style.display==='block'?'none':'block';
+}
+
+</script>
+</body>
+</html>
